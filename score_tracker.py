@@ -12,8 +12,8 @@ from functions import (FILE,
                        write_scores_to_csv,
                        update_user)
 
-today_str = get_todays_date_string()
-print(f"\n{today_str}")
+TODAY_STR = get_todays_date_string()
+print(f"\n{TODAY_STR}")
 todays_score = (prompt_user_for_score())
 
 PREVIOUS_SCORES = import_scores(FILE)
@@ -22,10 +22,10 @@ most_recent_score = float(score_values[-1])
 delta = calculate_delta(todays_score, most_recent_score)
 
 SCORE_TODAY = {}
-SCORE_TODAY[today_str] = float(todays_score)
+SCORE_TODAY[TODAY_STR] = float(todays_score)
 SCORES_MERGED = merge_dictionaries(SCORE_TODAY, PREVIOUS_SCORES)
 
-print(f"\ndate: {today_str}")
+print(f"\ndate: {TODAY_STR}")
 print(f"current score: {todays_score}")
 print(f"most recent score: {most_recent_score}")
 print_score_and_delta(delta)
