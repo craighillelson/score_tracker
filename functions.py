@@ -1,11 +1,11 @@
 """Functions."""
 
-import csv
-import pyinputplus as pyip
 from datetime import date
 from statistics import mean
+import csv
+import pyinputplus as pyip
 
-FILE = "dates_scores.csv"
+DATES_SCORES_CSV = "dates_scores.csv"
 
 
 def average(scores):
@@ -13,9 +13,9 @@ def average(scores):
     return mean(scores)
 
 
-def convert_values_to_list(DATES_AND_SCORES):
+def convert_values_to_list(dates_and_scores):
     """Return a list of a dictionary's values."""
-    return list(DATES_AND_SCORES.values())
+    return list(dates_and_scores.values())
 
 
 def get_todays_date_string():
@@ -23,35 +23,35 @@ def get_todays_date_string():
     return str(date.today())
 
 
-def import_scores(FILE):
+def import_scores(file_name):
     """Import dates and scores and dictionary keys and values."""
-    DCT = {}
+    dct_1 = {}
 
-    with open(FILE, newline="") as csvfile:
+    with open(file_name, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            DCT[row["date"]] = float(row["score"])
+            dct_1[row["date"]] = float(row["score"])
 
-    return DCT
+    return dct_1
 
 
-def merge_dictionaries(DCT1, DCT2):
+def merge_dictionaries(dct_1, dct_2):
     """Merge dictionaries."""
-    return {**DCT1, **DCT2}
+    return {**dct_1, **dct_2}
 
 
-def write_scores_to_csv(FILE, DCT):
+def write_scores_to_csv(file_name, dct_1):
     """Write dictionary to csv."""
-    with open(FILE, "w") as out_file:
+    with open(file_name, "w") as out_file:
         out_csv = csv.writer(out_file)
-        out_csv.writerow(["date","score"])
-        for date_str, score in DCT.items():
+        out_csv.writerow(["date", "score"])
+        for date_str, score in dct_1.items():
             out_csv.writerow([date_str, score])
 
 
-def update_user(FILE):
+def update_user(file_name):
     """Update the user."""
-    print(f'\n"{FILE}" exported successfully\n')
+    print(f'\n"{file_name}" exported successfully\n')
 
 
 def prompt_user_for_score():
@@ -67,7 +67,7 @@ def calculate_delta(todays_score, most_recent_score):
 def print_score_and_delta(delta):
     """Print the tNPS and delta."""
     if delta == 0:
-        print(f"delta: no change")
+        print("delta: no change")
     elif delta > 0:
         print(f"delta: +{round(delta, 2)}")
     else:

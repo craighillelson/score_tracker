@@ -1,6 +1,6 @@
 """Compile daily post."""
 
-from functions import (FILE,
+from functions import (DATES_SCORES_CSV,
                        average,
                        convert_values_to_list,
                        get_todays_date_string,
@@ -16,7 +16,7 @@ TODAY_STR = get_todays_date_string()
 print(f"\n{TODAY_STR}")
 todays_score = (prompt_user_for_score())
 
-PREVIOUS_SCORES = import_scores(FILE)
+PREVIOUS_SCORES = import_scores(DATES_SCORES_CSV)
 score_values = convert_values_to_list(PREVIOUS_SCORES)
 most_recent_score = float(score_values[-1])
 delta = calculate_delta(todays_score, most_recent_score)
@@ -32,5 +32,5 @@ print_score_and_delta(delta)
 MERGED_VALUES = convert_values_to_list(SCORES_MERGED)
 print(f"average: {round(average(MERGED_VALUES), 2)}")
 
-write_scores_to_csv(FILE, SCORES_MERGED)
-update_user(FILE)
+write_scores_to_csv(DATES_SCORES_CSV, SCORES_MERGED)
+update_user(DATES_SCORES_CSV)
