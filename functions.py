@@ -13,6 +13,11 @@ def average(scores):
     return mean(scores)
 
 
+def calculate_delta(todays_score, most_recent_score):
+    """Subtract the previous score from today's score."""
+    return todays_score - most_recent_score
+
+
 def convert_values_to_list(dates_and_scores):
     """Return a list of a dictionary's values."""
     return list(dates_and_scores.values())
@@ -38,8 +43,33 @@ def import_scores(file_name):
 def merge_dictionaries(dct_1, dct_2):
     """Merge dictionaries."""
     return {**dct_1, **dct_2}
+    
+
+def print_score_and_delta(delta):
+    """Print the tNPS and delta."""
+    delta_str = "delta:"
+    result = round(delta, 2)
+    result_no_change = delta_str + " no change"
+    result_pos = f"{delta_str} +{result}"
+    result_neg = f"{delta_str} {result}"
+    if delta == 0:
+        print(result_no_change)
+    elif delta > 0:
+        print(result_pos)
+    else:
+        print(result_neg)
+    
+
+def prompt_user_for_score():
+    """Prompt user for today's score."""
+    return pyip.inputNum("\nEnter current score.\n> ")
 
 
+def update_user(file_name):
+    """Update the user."""
+    print(f'\n"{file_name}" exported successfully\n')
+    
+    
 def write_scores_to_csv(file_name, dct_1):
     """Write dictionary to csv."""
     with open(file_name, "w") as out_file:
@@ -47,28 +77,3 @@ def write_scores_to_csv(file_name, dct_1):
         out_csv.writerow(["date", "score"])
         for date_str, score in dct_1.items():
             out_csv.writerow([date_str, score])
-
-
-def update_user(file_name):
-    """Update the user."""
-    print(f'\n"{file_name}" exported successfully\n')
-
-
-def prompt_user_for_score():
-    """Prompt user for today's score."""
-    return pyip.inputNum("\nEnter current score.\n> ")
-
-
-def calculate_delta(todays_score, most_recent_score):
-    """Subtract the previous score from today's score."""
-    return todays_score - most_recent_score
-
-
-def print_score_and_delta(delta):
-    """Print the tNPS and delta."""
-    if delta == 0:
-        print("delta: no change")
-    elif delta > 0:
-        print(f"delta: +{round(delta, 2)}")
-    else:
-        print(f"delta: {round(delta, 2)}")
