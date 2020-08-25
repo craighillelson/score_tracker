@@ -2,15 +2,15 @@
 
 from functions import (DATES_SCORES_CSV,
                        average,
+                       calculate_delta,
                        convert_values_to_list,
                        get_todays_date_string,
-                       prompt_user_for_score,
                        import_scores,
-                       print_score_and_delta,
-                       calculate_delta,
                        merge_dictionaries,
-                       write_scores_to_csv,
-                       update_user)
+                       print_score_and_delta,
+                       prompt_user_for_score,
+                       update_user,
+                       write_scores_to_csv)
 
 TODAY_STR = get_todays_date_string()
 print(f"\n{TODAY_STR}")
@@ -18,7 +18,8 @@ todays_score = (prompt_user_for_score())
 
 PREVIOUS_SCORES = import_scores(DATES_SCORES_CSV)
 score_values = convert_values_to_list(PREVIOUS_SCORES)
-most_recent_score = float(score_values[-1])
+# print(score_values[0])
+most_recent_score = float(score_values[0])
 delta = calculate_delta(todays_score, most_recent_score)
 
 SCORE_TODAY = {}
