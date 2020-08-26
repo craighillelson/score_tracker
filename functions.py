@@ -23,6 +23,11 @@ def convert_values_to_list(dates_and_scores):
     return list(dates_and_scores.values())
 
 
+def find_min_max(min_or_max, dct):
+    """Find high or low score."""
+    return min_or_max(dct.keys(), key=(lambda k: dct[k]))
+
+
 def get_todays_date_string():
     """Get today's date in YYYY-MM-DD format."""
     return str(date.today())
@@ -43,7 +48,12 @@ def import_scores(file_name):
 def merge_dictionaries(dct_1, dct_2):
     """Merge dictionaries."""
     return {**dct_1, **dct_2}
-    
+
+
+def print_high_or_low_scores(label, dct, score):
+    """Output high or low score."""
+    print(label, dct[score])
+
 
 def print_score_and_delta(delta):
     """Print the tNPS and delta."""
@@ -58,7 +68,7 @@ def print_score_and_delta(delta):
         print(result_pos)
     else:
         print(result_neg)
-    
+
 
 def prompt_user_for_score():
     """Prompt user for today's score."""
@@ -68,8 +78,8 @@ def prompt_user_for_score():
 def update_user(file_name):
     """Update the user."""
     print(f'\n"{file_name}" exported successfully\n')
-    
-    
+
+
 def write_scores_to_csv(file_name, dct_1):
     """Write dictionary to csv."""
     with open(file_name, "w") as out_file:
