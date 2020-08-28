@@ -33,7 +33,7 @@ print(f"current score: {todays_score}")
 if len(SCORES_MERGED) > 1:
     most_recent_score = score_values[0]
     print(f"most recent score: {most_recent_score}")
-    delta = calculate_delta(todays_score, most_recent_score)
+    delta = round(calculate_delta(todays_score, most_recent_score), 2)
     print(f"delta:", end=" ")
     if delta > 0:
         print(f"+{delta}")
