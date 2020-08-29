@@ -55,21 +55,6 @@ def print_high_or_low_scores(label, dct, score):
     print(label, dct[score])
 
 
-def print_score_and_delta(delta):
-    """Print the tNPS and delta."""
-    delta_str = "delta:"
-    result = round(delta, 2)
-    result_no_change = delta_str + " no change"
-    result_pos = f"{delta_str} +{result}"
-    result_neg = f"{delta_str} {result}"
-    if delta == 0:
-        print(result_no_change)
-    elif delta > 0:
-        print(result_pos)
-    else:
-        print(result_neg)
-
-
 def prompt_user_for_score():
     """Prompt user for today's score."""
     return pyip.inputNum("\nEnter current score.\n> ")
