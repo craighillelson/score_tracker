@@ -9,7 +9,7 @@ from functions import (DATES_SCORES_CSV,
                        import_scores,
                        merge_dictionaries,
                        print_high_or_low_scores,
-                       print_score_and_delta,
+                       # print_score_and_delta,
                        prompt_user_for_score,
                        update_user,
                        write_scores_to_csv)
@@ -34,7 +34,7 @@ if len(SCORES_MERGED) > 1:
     most_recent_score = score_values[0]
     print(f"most recent score: {most_recent_score}")
     delta = round(calculate_delta(todays_score, most_recent_score), 2)
-    print(f"delta:", end=" ")
+    print("delta:", end=" ")
     if delta > 0:
         print(f"+{delta}")
     else:
