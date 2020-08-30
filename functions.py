@@ -23,9 +23,9 @@ def convert_values_to_list(dates_and_scores):
     return list(dates_and_scores.values())
 
 
-def find_min_max(min_or_max, dct):
+def find_min_max(min_or_max, lst):
     """Find high or low score."""
-    return min_or_max(dct.keys(), key=(lambda k: dct[k]))
+    return min_or_max(lst)
 
 
 def get_todays_date_string():
