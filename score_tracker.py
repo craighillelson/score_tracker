@@ -42,13 +42,12 @@ if len(SCORES_MERGED) > 1:
     output_result("delta from previous score:", delta_from_previous_score)
     MERGED_VALUES = convert_values_to_list(SCORES_MERGED)
     print(f"average: {round(average(MERGED_VALUES), 2)}")
+    key_min = find_min_max(min, SCORES_MERGED)
+    key_max = find_min_max(max, SCORES_MERGED)
+    print_high_or_low_scores("low score:", SCORES_MERGED, key_min)
+    print_high_or_low_scores("high score:", SCORES_MERGED, key_max)
 else:
     pass
-
-key_min = find_min_max(min, SCORES_MERGED)
-key_max = find_min_max(max, SCORES_MERGED)
-print_high_or_low_scores("low score:", SCORES_MERGED, key_min)
-print_high_or_low_scores("high score:", SCORES_MERGED, key_max)
 
 write_scores_to_csv(DATES_SCORES_CSV, SCORES_MERGED)
 update_user(DATES_SCORES_CSV)
