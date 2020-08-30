@@ -13,9 +13,9 @@ def average(scores):
     return mean(scores)
 
 
-def calculate_delta(todays_score, most_recent_score):
+def calculate_delta(score_1, score_2):
     """Subtract the previous score from today's score."""
-    return todays_score - most_recent_score
+    return round((score_1 - score_2), 2)
 
 
 def convert_values_to_list(dates_and_scores):
@@ -50,6 +50,15 @@ def merge_dictionaries(dct_1, dct_2):
     return {**dct_1, **dct_2}
 
 
+def output_result(delta_str, delta):
+    """Format result."""
+    print(delta_str, end=" ")
+    if delta > 0:
+        print(f"+{delta}")
+    else:
+        print(delta)
+
+
 def print_high_or_low_scores(label, dct, score):
     """Output high or low score."""
     print(label, dct[score])
@@ -58,6 +67,11 @@ def print_high_or_low_scores(label, dct, score):
 def prompt_user_for_score():
     """Prompt user for today's score."""
     return pyip.inputNum("\nEnter current score.\n> ")
+
+
+def prompt_user_for_target():
+    """Prompt the user for the target score."""
+    return pyip.inputNum("\nEnter the target score.\n> ")
 
 
 def update_user(file_name):
