@@ -8,8 +8,7 @@ import pyinputplus as pyip
 DATES_SCORES_CSV = "dates_scores.csv"
 
 
-def average(scores):
-    """Return the average value of a list of numbers."""
+def get_average(scores):
     return mean(scores)
 
 
@@ -28,8 +27,7 @@ def find_min_max(min_or_max, lst):
     return min_or_max(lst)
 
 
-def get_todays_date_string():
-    """Get today's date in YYYY-MM-DD format."""
+def get_todays_date_format_as_a_sting():
     return str(date.today())
 
 
