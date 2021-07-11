@@ -1,11 +1,11 @@
 """Compile daily post."""
 
 from functions import (DATES_SCORES_CSV,
-                       average,
+                       get_average,
                        calculate_delta,
                        convert_values_to_list,
                        find_min_max,
-                       get_todays_date_string,
+                       get_todays_date_format_as_a_sting,
                        import_scores,
                        merge_dictionaries,
                        output_result,
@@ -16,7 +16,7 @@ from functions import (DATES_SCORES_CSV,
                        write_scores_to_csv)
 
 PREVIOUS_SCORES = import_scores(DATES_SCORES_CSV)
-TODAY_STR = get_todays_date_string()
+TODAY_STR = get_todays_date_format_as_a_sting()
 
 if PREVIOUS_SCORES:
     score_values = convert_values_to_list(PREVIOUS_SCORES)
@@ -41,7 +41,7 @@ if len(SCORES_MERGED) > 1:
     delta_from_previous_score = calculate_delta(todays_score, most_recent_score)
     output_result("delta from previous score:", delta_from_previous_score)
     MERGED_VALUES = convert_values_to_list(SCORES_MERGED)
-    print(f"average: {round(average(MERGED_VALUES), 2)}")
+    print(f"average: {round(get_average(MERGED_VALUES), 2)}")
     key_min = find_min_max(min, SCORES_MERGED)
     key_max = find_min_max(max, SCORES_MERGED)
     print_high_or_low_scores("low score:", SCORES_MERGED, key_min)
